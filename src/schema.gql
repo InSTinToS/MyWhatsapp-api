@@ -1,0 +1,32 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Contact {
+  id: String!
+  name: String!
+  phone: Int!
+}
+
+type Query {
+  contacts: [Contact!]!
+  contact(id: String!): Contact!
+}
+
+type Mutation {
+  createContact(createContactInput: CreateContactInput!): Contact!
+  updateContact(updateContactInput: UpdateContactInput!): Contact!
+  removeContact(id: String!): Contact!
+  sendMessage(id: String!, message: String!): Contact!
+}
+
+input CreateContactInput {
+  name: String!
+  phone: Int!
+}
+
+input UpdateContactInput {
+  name: String
+  phone: Int
+  id: String!
+}
