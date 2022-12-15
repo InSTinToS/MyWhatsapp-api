@@ -6,27 +6,35 @@ type Contact {
   id: String!
   name: String!
   phone: Int!
+  whatsapp: Boolean!
+}
+
+type Whatsapp {
+  listening: Boolean!
 }
 
 type Query {
   contacts: [Contact!]!
   contact(id: String!): Contact!
+  stopListenWhatsapp: Whatsapp!
+  listenWhatsapp: Whatsapp!
 }
 
 type Mutation {
   createContact(createContactInput: CreateContactInput!): Contact!
   updateContact(updateContactInput: UpdateContactInput!): Contact!
   removeContact(id: String!): Contact!
-  sendMessage(id: String!, message: String!): Contact!
 }
 
 input CreateContactInput {
   name: String!
   phone: Int!
+  whatsapp: Boolean!
 }
 
 input UpdateContactInput {
   name: String
   phone: Int
+  whatsapp: Boolean
   id: String!
 }

@@ -1,11 +1,14 @@
+import { AppController } from './app.controller'
+import { GlobalModule } from './global.module'
+import { ContactsModule } from './modules/contacts/contacts.module'
+import { WhatsappModule } from './modules/whatsapp/whatsapp.module'
+
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { Module } from '@nestjs/common'
 import { GraphQLModule } from '@nestjs/graphql'
-import { join } from 'path'
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
-import { AppController } from './app.controller'
-
-import { ContactsModule } from './contacts/contacts.module'
 import { MongooseModule } from '@nestjs/mongoose'
+
+import { join } from 'path'
 
 @Module({
   imports: [
@@ -17,7 +20,9 @@ import { MongooseModule } from '@nestjs/mongoose'
       'mongodb+srv://user:9vXvDQhwfpzkGZ9s@cluster0.tbfgvgu.mongodb.net/?retryWrites=true&w=majority',
       { useNewUrlParser: true }
     ),
-    ContactsModule
+    GlobalModule,
+    ContactsModule,
+    WhatsappModule
   ],
   providers: [],
   controllers: [AppController]
